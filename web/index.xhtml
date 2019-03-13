@@ -4,32 +4,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-    <title>Hello World!</title>
+    <title><h:outputText value="#{messages['title']}"/></title>
 </h:head>
 <h:body>
     <h:form>
-        <h:panelGrid columns="2" cellspacing="1" cellpadding="1">
+        <h:panelGrid columns="2"
+                     cellspacing="1"
+                     cellpadding="1">
             <h:panelGroup>
                 <h:outputLabel for="firstName">
-                    <h:outputText value="FirstName: " />
+                    <h:outputText value="#{messages.firstName}: "/>
                 </h:outputLabel>
             </h:panelGroup>
             <h:panelGroup>
-                <h:inputText id="firstName" value="#{welcomeBean.firstName}"/>
+                <h:inputText id="firstName"
+                             value="#{welcomeBean.firstName}"/>
             </h:panelGroup>
 
             <h:panelGroup>
                 <h:outputLabel for="lastName">
-                    <h:outputText value="LastName: " />
+                    <h:outputText value="#{messages.lastName}: "/>
                 </h:outputLabel>
             </h:panelGroup>
             <h:panelGroup>
-                <h:inputText id="lastName" value="#{welcomeBean.lastName}"/>
+                <h:inputText id="lastName"
+                             value="#{welcomeBean.lastName}"/>
             </h:panelGroup>
 
             <h:panelGroup>
-                <h:commandButton id="submit" value="Submit"
-                                 action="#{welcomeBean.welcomeUser}" />
+                <h:commandButton id="submit"
+                                 value="#{messages.submit}"
+                                 action="#{welcomeBean.submit}"/>
             </h:panelGroup>
         </h:panelGrid>
     </h:form>

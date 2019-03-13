@@ -13,12 +13,12 @@
       xmlns:h="http://java.sun.com/jsf/html">
 
 <h:head>
-    <title>Hello!!!</title>
+    <title><h:outputText value="#{messages.title}"/></title>
 </h:head>
 <h:body>
     <h:form><h1>
         <h:outputText id="welcomeUser"
-                      value="Hello from #{welcomeBean.firstName} #{welcomeBean.lastName}!"/>
+                      value="#{messages.helloToNew} #{welcomeBean.firstName} #{welcomeBean.lastName}!"/>
     </h1></h:form>
 </h:body>
 
