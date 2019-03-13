@@ -2,13 +2,10 @@ package com.my.bean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.annotation.Resource;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 @ManagedBean
 @SessionScoped
@@ -67,6 +64,7 @@ public class WelcomeBean {
             query.setString(2, lastName);
             ResultSet result = query.executeQuery();
             if (!result.next()){
+                registrationDate = null;
                 PreparedStatement statement = conn.prepareStatement("INSERT INTO Users VALUES(?,?,NOW())");
                 statement.setString(1, firstName);
                 statement.setString(2, lastName);
