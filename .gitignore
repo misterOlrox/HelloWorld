@@ -68,4 +68,5 @@ fabric.properties
 # My HelloWorld project
 .idea/
 HelloWorld.iml
+target/
 
