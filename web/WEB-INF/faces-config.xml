@@ -6,7 +6,7 @@
 
     <application>
         <resource-bundle>
-            <base-name>com.my.bean.messages</base-name>
+            <base-name>messages</base-name>
             <var>messages</var>
         </resource-bundle>
 

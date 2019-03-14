@@ -2,10 +2,13 @@ package com.my.bean;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.naming.NamingException;
+import com.my.data.connect.DatabaseConnector;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 
 @ManagedBean
 @SessionScoped
@@ -13,8 +16,6 @@ public class WelcomeBean {
     private String firstName;
     private String lastName;
     private String registrationDate;
-
-    private Logger logger = Logger.getLogger("com.my.bean");
 
     public String getFirstName() {
         return firstName;
@@ -41,7 +42,6 @@ public class WelcomeBean {
             doLogin();
         }
         catch (SQLException ex) {
-            logger.log(Level.SEVERE, "login failed", ex);
             return "error";
         } catch (NamingException e) {
             e.printStackTrace();
@@ -53,9 +53,7 @@ public class WelcomeBean {
     }
 
     public void doLogin() throws SQLException, NamingException {
-        Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/helloworld_database?useUnicode=true&serverTimezone=UTC",
-                "root", "password");
+        Connection conn = DatabaseConnector.getConnection();
         if (conn == null) throw new SQLException("No connection");
         try {
             PreparedStatement query = conn.prepareStatement(
